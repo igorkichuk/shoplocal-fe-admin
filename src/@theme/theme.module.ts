@@ -77,20 +77,12 @@ const PIPES = [
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders<ThemeModule> {
-    const darkModeOn =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    let theme = "default"
-    if (darkModeOn) {
-      theme = "dark"
-    }
     return {
       ngModule: ThemeModule,
       providers: [
         ...NbThemeModule.forRoot(
           {
-            name: theme,
+            name: 'default',
           },
           [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
         ).providers,
